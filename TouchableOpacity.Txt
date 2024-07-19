@@ -1,0 +1,49 @@
+import React from 'react';
+import { View, Text, StyleSheet, TouchableOpacity  } from 'react-native';
+
+const App = () => {
+
+   const HandleOne =()=>{
+    console.log("Pressed ")
+   }
+  return (
+  
+    < View style={styles.container}>
+      <TouchableOpacity onPress={HandleOne} 
+      style={styles.t2}
+      activeOpacity={0.6}
+       >
+      <Text style={styles.t1}>Press Me For Notifaction</Text>
+      </TouchableOpacity>
+    </View>
+    
+
+  );
+};
+
+const styles = StyleSheet.create({
+ 
+  container: {
+    flex:1,
+    justifyContent:'center',
+    alignItems:'center'
+  },
+  t1: {
+    fontSize: 20,
+    color:"white",
+    
+  },
+  t2:{
+    backgroundColor:'#ea9daa',
+    padding: 20,
+    borderRadius:20,
+    
+  }
+  
+ 
+});
+
+export default App;
+
+
+// on the palce of TouchableOpacity we can use TouchableHighlight //
