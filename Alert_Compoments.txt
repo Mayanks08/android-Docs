@@ -1,0 +1,51 @@
+import React  from 'react';
+import { View, Text, StyleSheet, Alert, Button } from 'react-native';
+
+const App = () => {
+
+  const testing = () =>{
+    Alert.alert('Confirmation','Are you sure you want to be a Developer?',[
+      {
+        text:'Yes',
+        onPress:()=>console.log('Yes'),
+
+      },
+      {
+        text:'No',
+        onPress:()=>console.log('No')
+      }
+    ])
+  }
+ 
+  return (
+  
+    < View style={styles.container}>
+    <Button title='Delete Com'  onPress={testing} color="#841584"/>
+    </View>
+    
+
+  );
+};
+
+const styles = StyleSheet.create({
+ 
+  container: {
+    flex:1,
+    justifyContent:'center',
+    alignItems:'center'
+  },
+  t1: {
+    fontSize: 20,
+    fontWeight:"bold"
+  },
+  t2:{
+    backgroundColor:'#ea9daa',
+    padding: 20,
+    borderRadius:20,
+    
+  }
+  
+ 
+});
+
+export default App;
