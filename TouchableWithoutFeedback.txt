@@ -1,0 +1,45 @@
+import React from 'react';
+import { View, Text, StyleSheet,  TouchableWithoutFeedback  } from 'react-native';
+
+const App = () => {
+
+   const HandleOne =()=>{
+    console.log("Pressed ")
+   }
+  return (
+  
+    < View style={styles.container}>
+      <TouchableWithoutFeedback onPress={HandleOne} 
+      style={styles.t2}
+      
+       >
+      <Text style={styles.t1}>Press Me For Notifaction</Text>
+      </TouchableWithoutFeedback>
+    </View>
+    
+
+  );
+};
+
+const styles = StyleSheet.create({
+ 
+  container: {
+    flex:1,
+    justifyContent:'center',
+    alignItems:'center'
+  },
+  t1: {
+    fontSize: 20,
+    fontWeight:"bold"
+  },
+  t2:{
+    backgroundColor:'#ea9daa',
+    padding: 20,
+    borderRadius:20,
+    
+  }
+  
+ 
+});
+
+export default App;
