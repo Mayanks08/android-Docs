@@ -1,0 +1,39 @@
+import React  from 'react';
+import { View, Text, StyleSheet, StatusBar} from 'react-native';
+
+const App = () => {
+
+ 
+  return (
+  
+    < View style={styles.container}>
+      <StatusBar backgroundColor="#6FC2D0" />
+      <Text style={styles.t1}>Banana</Text>
+    </View>
+    
+
+  );
+};
+
+const styles = StyleSheet.create({
+ 
+  container: {
+    flex:1,
+    justifyContent:'center',
+    alignItems:'center'
+  },
+  t1: {
+    fontSize: 20,
+    fontWeight:"bold"
+  },
+  t2:{
+    backgroundColor:'#ea9daa',
+    padding: 20,
+    borderRadius:20,
+    
+  }
+  
+ 
+});
+
+export default App;
