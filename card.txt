@@ -1,0 +1,114 @@
+import { Text, View, StyleSheet,ScrollView,RefreshControl } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import Cards from './explore';
+// You can import supported modules from npm
+
+export default function App() {
+  const [refreshing,setRefreshing] = useState(false);
+  const [cards, setCards] = useState([
+    { id:1,
+      title:"card 1",
+     descri: "moj kardi",
+     imageSource:require("@/assets/images/img01.jpg")},
+    {id:2,
+    title:"card 2",
+     descri: "moj kardi",
+      imageSource:require("@/assets/images/img01.jpg")},
+    {id:3,
+      title:"card 3",
+      descri: "moj kardi",
+     imageSource:require("@/assets/images/img01.jpg")},
+  ])
+
+  const handleRefresh =() =>{
+    setRefreshing(true);
+
+    setTimeout(() =>{
+      setCards((prevCards) =>[...prevCards, 
+    {id:4,
+    title:"card 4", 
+    descri: "moj kardi",
+     imageSource:require("@/assets/images/img01.jpg")},
+    {id:5,
+      title:"card 5",
+     descri: "moj kardi",
+      imageSource:require("@/assets/images/img01.jpg")},
+    {id:6,
+    title:"card 6",
+     descri: "moj kardi",
+     imageSource:require("@/assets/images/img01.jpg")},
+    {id:7,title:"card 7",
+     descri: "moj kardi",
+      imageSource:require("@/assets/images/img01.jpg")},])
+      setRefreshing(false);
+    },2000)
+  }
+  return (
+    < View style={styles.container}>
+    <ScrollView refreshControl={<RefreshControl  refreshing={refreshing} onRefresh={handleRefresh} /> 
+    } >
+    {cards.map((cards) =>(
+      <Cards 
+      key = {cards.id} 
+      descri={cards.descri}
+      imageSource={cards.imageSource}
+      />
+      ))}
+      </ScrollView>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+});
+
+////// card components///////
+
+import { Text, View, StyleSheet,Image } from 'react-native';
+
+const Cards = ({...props}) => {
+  
+  const {title,descri,imageSource} = props
+
+  return (
+    <View style={styles.cards}>
+    {imageSource && <Image source={imageSource} style={styles.cardsImage}/>}
+      <Text style={styles.tit}>{title}</Text>
+      <Text style={{color: '#F8F4EC', fontSize:25}}>{descri}</Text>
+      
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  cards:{
+    padding: 25,
+    margin:10,
+    color:"#E1F0DA",
+    backgroundColor:"#85586F",
+    shadowColor:"#FDF0D1",
+    shadowOffset:{width:0,height:5},
+    shadowOpacity:5,
+    elevation:5,
+    borderRadius:20,
+  },
+  tit:{
+    fontSize:25,
+    color: '#F8F4EC',
+    fontWeight:"bold",
+    marginBottom:10
+  },
+  cardsImage:{
+    height:200,
+    width:350,
+  }
+
+})
+
+export default Cards;
+
