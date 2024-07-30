@@ -1,0 +1,122 @@
+import React from 'react';
+import { View, Text, StyleSheet, } from 'react-native';
+import Button from './explore';
+
+const App = () => {
+  
+  return (
+    <View style={styles.container}>
+     <Button 
+     label='Button1'
+      handleit={() =>console.log("1 no is pressed")}
+      type='primary1'/>
+     <Button  
+     label='Button2' 
+     handleit={() =>console.log("2 no is pressed")}
+     type='danger1' />
+     <Button 
+     label='Button3'
+     handleit={() =>console.log("3 no is pressed")}
+     type='success1'/>
+     <Button 
+     label='Button4'
+     handleit={() =>console.log("4 no is pressed")}
+     type='warning'/>
+    </View>
+
+  );
+};
+
+const styles = StyleSheet.create({
+ 
+  container: {
+    flex:1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  t1: {
+    backgroundColor:'#ea9daa',
+    padding: 20,
+    borderRadius:20,
+  },
+  t2:{
+   
+  }
+  
+ 
+});
+
+export default App;
+
+
+
+// component file//
+
+import { Text, StyleSheet,TouchableOpacity } from 
+'react-native';
+
+  const Button = ({handleit , label , type}) => {
+    const getButtonStyle = (type) => {
+      if (type === 'primary1') {
+        return styles.primaryButton;
+      }
+      if (type === 'danger1') {
+        return styles.dangerButton;
+      }
+      if (type === 'success1') {
+        return styles.successButton;
+      }
+      if (type === 'warning') {
+        return styles.warningButton;
+      }
+      return styles.defaultButton;
+    }
+        
+        
+  
+  return (
+    <TouchableOpacity onPress={handleit} style={[ styles.buttonAs,getButtonStyle(type)]} >
+      <Text style ={styles.tit}>{label}</Text>
+    </TouchableOpacity>
+  );
+};
+
+const styles = StyleSheet.create({
+  buttonAs:{
+   width:"60%",
+   height:75, 
+   backgroundColor:'#50B498',
+   justifyContent:'center',
+   alignItems:'center',
+   borderRadius:10,
+   margin:15,
+ 
+  },
+  tit:{
+   fontSize:20,
+   color:"#EEEDEB",
+   fontWeight:"bold"
+  },
+  primaryButton:{
+    backgroundColor:"blue",
+  },
+  dangerButton:{
+    backgroundColor:"red",
+  },
+  successButton:{
+    backgroundColor:"green",
+  },
+  warningButton:{
+    backgroundColor:"orange",
+  },
+  defaultButton:{
+    backgroundColor:"gray",
+  }
+
+
+})
+
+
+export default Button;
+
+
