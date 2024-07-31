@@ -1,0 +1,40 @@
+import React from 'react';
+import { View, Text, StyleSheet } from 'react-native';
+
+export default function App() {
+  return (
+    
+      <View style={styles.pinkContainer}>
+        <View style={styles.redBox} />
+        <View style={styles.grayBox} />
+        <View style={styles.blueBox} />
+        <View style={styles.greenBox} />
+      </View>
+   
+  );
+}
+
+const styles = StyleSheet.create({
+
+  pinkContainer: {
+    backgroundColor: 'pink',
+    flex: 1,
+  },
+  redBox: {
+    backgroundColor: 'red',
+    flex: 1,
+  },
+  grayBox: {
+    backgroundColor: 'gray',
+    flex: 1,
+  },
+  blueBox: {
+    backgroundColor: 'blue',
+    flex: 1,
+  },
+  greenBox: {
+    backgroundColor: 'green',
+    flex: 1,
+  },
+});
+
