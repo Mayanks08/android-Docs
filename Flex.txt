@@ -38,3 +38,9 @@ const styles = StyleSheet.create({
   },
 });
 
+
+// if main axis = horizontal 
+// then flexbasis = width
+
+// if main axis = vertical 
+// then flexbasis = height
