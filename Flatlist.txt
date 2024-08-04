@@ -1,0 +1,58 @@
+import React from 'react';
+import { View, Text, StyleSheet, FlatList, Image } from 'react-native';
+
+// Flatlist components is suitable for linear data comes backend in render a list
+
+const data = [
+  {
+    title:"Car",
+    data:["xuv700", "cr-v","punch"],
+    image:require("@/assets/images/img01.jpg")
+    
+  },
+  {
+    title:"Bike",
+    data:["bajaj", "splender","hero", "mira","lord-alto"],
+    image:require("@/assets/images/img01.jpg")
+   
+  },
+  {
+    title:"scooty",
+    data:["mestro", "activa","me",  "ss"],
+    image:require("@/assets/images/img01.jpg")
+  }
+];
+
+
+export default function App() {
+  return (
+    <FlatList 
+    data={data}
+    renderItem={(obj) =>
+      <View style={styles.container}>
+        <Text style={styles.tie}>{obj.item.title}</Text>
+        <Image style={styles.pi} source={obj.item.image}/>
+      </View>
+    }
+    keyExtractor={(item) =>item.title}
+    />
+  );
+}
+
+const styles = StyleSheet.create({
+
+  container: {
+    flex:1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  tie:{
+    fontSize: 20,
+    color: 'blue',
+  }, 
+  pi:{
+    height:25,
+    width:20,
+  }
+});
+
