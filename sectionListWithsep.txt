@@ -1,0 +1,75 @@
+import React from 'react';
+import { View, Text, StyleSheet, Image, SectionList } from 'react-native';
+
+const itemseparator = ()=><View style={styles.pi}/>
+const separator = ()=><View style={styles.pie}/>
+const data = [
+  {
+    title:"Car",
+    data:[{ name:"xuv700", id:1},
+          { name:"cr-v",id:2 },
+          { name:"punch",id:3}],
+    
+  },
+  {
+    title:"Bike",
+    data:[{name:"bajaj", id:4},
+          {name: "mira",id:5},
+          {name:"lord-alto",id:6}
+        ],
+    
+   
+  },
+  {
+    title:"scooty",
+    data:[{name:"mestro",id:7}, 
+          {name:"activa",id:8}],
+    
+  }
+];
+
+
+export default function App() {
+  return (
+    <SectionList
+    sections={data}
+    renderSectionHeader={({section})=> ( 
+    <View style={styles.container}>
+      <Text style={styles.tie}>{section.title}</Text>
+    
+    </View>
+    )}
+    renderItem={({item}) => (
+      <View>
+        <Text style={styles.tie}>{item.name}</Text>
+      </View>
+    )}
+      keyExtractor={(item) => item.id}
+      ItemSeparatorComponent={itemseparator}
+      SectionSeparatorComponent={separator}
+    />
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 15,
+   
+  },
+  tie:{
+    fontSize: 20,
+    
+  }, 
+  pi:{
+    height:2,
+    backgroundColor:"blue"
+  },
+  pie:{
+    height:2,
+    backgroundColor:"gray"
+  }
+});
+
