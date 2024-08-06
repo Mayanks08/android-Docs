@@ -1,49 +1,66 @@
-import React from 'react';
-import { View, Text, StyleSheet, Image, SectionList } from 'react-native';
+// in this code we apply secton list multiple selection and separtors
 
-const itemseparator = ()=><View style={styles.pi}/>
-const separator = ()=><View style={styles.pie}/>
+import React, { useState } from 'react';
+import { View, Text, StyleSheet, Image, SectionList, TouchableOpacity } from 'react-native';
+
+const itemseparator = () => <View style={styles.pi} />
+const separator = () => <View style={styles.pie} />
 const data = [
   {
-    title:"Car",
-    data:[{ name:"xuv700", id:1},
-          { name:"cr-v",id:2 },
-          { name:"punch",id:3}],
-    
+    title: "Car",
+    data: [{ name: "xuv700", id: 1 },
+    { name: "cr-v", id: 2 },
+    { name: "punch", id: 3 }],
+
   },
   {
-    title:"Bike",
-    data:[{name:"bajaj", id:4},
-          {name: "mira",id:5},
-          {name:"lord-alto",id:6}
-        ],
-    
-   
+    title: "Bike",
+    data: [{ name: "Bajaj", id: 4 },
+    { name: "Mira", id: 5 },
+    { name: "Lord-alto", id: 6 }
+    ],
+
+
   },
   {
-    title:"scooty",
-    data:[{name:"mestro",id:7}, 
-          {name:"activa",id:8}],
-    
+    title: "Scooty",
+    data: [{ name: "mestro", id: 7 },
+    { name: "activa", id: 8 }],
+
   }
 ];
 
 
 export default function App() {
+
+  const [selectedItems, setSelectedItems] = useState([])
+
+  const handlePress = (id)=>{
+      setSelectedItems((prev) => {
+
+     if(prev.includes(id)){
+      return prev.filter(prevId => prevId !== id)
+     }
+     return [...selectedItems,id]
+    })
+  }
+
   return (
     <SectionList
-    sections={data}
-    renderSectionHeader={({section})=> ( 
-    <View style={styles.container}>
-      <Text style={styles.tie}>{section.title}</Text>
-    
-    </View>
-    )}
-    renderItem={({item}) => (
-      <View>
-        <Text style={styles.tie}>{item.name}</Text>
-      </View>
-    )}
+      sections={data}
+      renderSectionHeader={({ section }) => (
+        <View style={styles.container}>
+          <Text style={styles.tie}>{section.title}</Text>
+
+        </View>
+      )}
+      renderItem={({ item }) => (
+        <TouchableOpacity onPress={() => handlePress(item.id)}>
+          <View style={[styles.tie, { backgroundColor:  selectedItems.includes(item.id) ? "lightblue" : "pink" }]}>
+            <Text style={{ fontSize: 24 }}>{item.name}</Text>
+          </View>
+        </TouchableOpacity>
+      )}
       keyExtractor={(item) => item.id}
       ItemSeparatorComponent={itemseparator}
       SectionSeparatorComponent={separator}
@@ -57,19 +74,22 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 15,
-   
+
   },
-  tie:{
+  tie: {
     fontSize: 20,
-    
-  }, 
-  pi:{
-    height:2,
-    backgroundColor:"blue"
+    marginLeft: 10
+
   },
-  pie:{
-    height:2,
-    backgroundColor:"gray"
+  pi: {
+
+    height: 2,
+    backgroundColor: "blue"
+  },
+  pie: {
+    height: 2,
+    backgroundColor: "gray",
+
   }
 });
 
