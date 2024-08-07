@@ -28,7 +28,8 @@ const App = () => {
  
   return (
   
-  < ScrollView  contentContainerStyle={styles.container}           refreshControl={<RefreshControl
+  < ScrollView  contentContainerStyle={styles.container}  
+    refreshControl={<RefreshControl
      refreshing={refreshing}
      onRefresh={onRefresh}
     />}>
