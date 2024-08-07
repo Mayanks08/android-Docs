@@ -1,0 +1,91 @@
+import React, { useState } from 'react';
+import { View, Text, StyleSheet, FlatList, Image, TouchableOpacity, RefreshControl} from 'react-native';
+import { GestureHandlerRootView, Swipeable } from 'react-native-gesture-handler'
+// Flatlist components is suitable for linear data comes backend in render a list
+const itemSeparator = () => <View style={styles.pi} />
+const data = [ "Apple","Mangoes","Pineapple","Kiwi","Orange","Berries"];
+function ListItem({item}) {
+
+  const renderLeftAction=()=>(
+    <TouchableOpacity onPress={() =>{console.log("delete is working fine")}}>
+    <View style={styles.det}>
+      <Text style={styles.detext}>Delete</Text>
+    </View>
+    </TouchableOpacity>
+  );
+  return(
+    <Swipeable renderLeftActions={renderLeftAction}>
+    <View style={styles.itemContainer}>
+      <Text style={styles.tie}>{item}</Text>
+    </View>
+    </Swipeable>
+  )
+}
+
+
+export default function App() {
+  const [refreshing, setRefreshing] = useState(false)
+  const onRefresh = () => {
+    setRefreshing(true)
+    setTimeout(() => {
+      setRefreshing(false)
+    },2000)}
+  
+  return (
+    <GestureHandlerRootView style={{ flex: 1 }}>
+    <View style={styles.container}>
+    <FlatList 
+    data={data}
+    keyExtractor={(item) =>item}
+    renderItem={({item}) => <ListItem item={item}/>}
+    ItemSeparatorComponent={itemSeparator}
+    refreshControl={
+      <RefreshControl
+      refreshing={refreshing}
+      onRefresh={onRefresh}
+      tintColor="#9CDBA6"
+      title='Pull To Refresh'
+      titleColor="#468585"
+      progressBackgroundColor="lightblue"
+      />
+    }
+    />
+    </View>
+    </GestureHandlerRootView>
+  );
+}
+
+const styles = StyleSheet.create({
+
+  container: {
+    flex:1,
+    marginTop:10
+  },
+  tie:{
+    fontSize: 20,
+    color: 'orange',
+    fontWeight:"bold"
+  }, 
+  itemContainer:{
+   padding:15,
+   backgroundColor:"#f2f2f2",
+   borderBottomWidth:1,
+   borderBottomColor:"gray",
+   flexDirection:"row",
+   justifyContent:"space-between",
+   alignItems:"center"
+  },
+  det:{
+    backgroundColor:"red",
+    justifyContent:"center",
+    alignItems:"center",
+    width:80
+   
+  },
+  detext:{
+    fontSize:13,
+    padding:20,
+    fontWeight:"bold",
+    color:"white"  
+  }
+});
