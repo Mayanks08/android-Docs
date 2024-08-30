@@ -1,0 +1,42 @@
+
+import { useState } from 'react';
+import {  StyleSheet, Text, View } from 'react-native';
+import {Picker} from '@react-native-picker/picker';
+
+export default function Testing() {
+
+  const[selectedValue, setSelectedValue]= useState("")
+
+  return (
+    <View style={styles.container} >
+      <Text>Select a programming language</Text>
+      <Picker
+       
+        style={styles.picker}
+        selectedValue={selectedValue}
+        onValueChange={(itemValue,itemIndex) =>setSelectedValue(itemValue)}>
+          <Picker.Item style={styles.item} label='Java' value='Java'/>
+          <Picker.Item style={styles.item} label='JavaScript' value='JavaScript'/>
+          <Picker.Item style={styles.item} label='Python' value='Python'/>
+          <Picker.Item style={styles.item} label='Android' value='Android'/>
+        </Picker>
+    </View>
+     
+  );
+}
+
+const styles = StyleSheet.create({
+  container:{
+    flex:1,
+    backgroundColor:"#BBBBBB",
+    alignItems:"center",
+    justifyContent:"center",
+  },
+  item:{
+    fontSize:15,
+  },
+  picker:{
+    width:200,
+    height:50,
+  },
+});
