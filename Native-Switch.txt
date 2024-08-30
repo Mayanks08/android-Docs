@@ -1,0 +1,31 @@
+
+import { useState } from 'react';
+import {  StyleSheet, Switch, Text, View } from 'react-native';
+
+export default function Testing() {
+
+  const[check,isChecked]= useState(false)
+
+  return (
+    <View style={styles.container} >
+      <Text>{check? "Disable" : "Enable"}</Text>
+      <Switch value={check} onValueChange={()=>isChecked(!check)}
+       thumbColor={check? "#E7759A" : "#FDF7C3"} 
+       trackColor={{ false: "#767577", true: "#81b0bb" }}
+      />
+
+    </View>
+     
+  );
+}
+
+const styles = StyleSheet.create({
+  container:{
+    flex:1,
+    backgroundColor:"#BBBBBB",
+    alignItems:"center",
+    justifyContent:"center",
+  },
+  
+
+});
