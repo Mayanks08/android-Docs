@@ -1,0 +1,58 @@
+
+import {  Button, Keyboard,StyleSheet, Text, TextInput, TouchableWithoutFeedback, View } from 'react-native';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+
+
+export default function Testing() {
+
+  return (
+    <KeyboardAwareScrollView style={styles.container} behavior='padding'>
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+   <View style={styles.inner}>
+    <Text style={styles.header}>Welcome to my app</Text>
+    <TextInput style={styles.Textinput}  placeholder='UserName'/>
+     <View style={styles.btncontainer}>
+     <TextInput style={styles.Textinput}  placeholder='Password1'/>
+     <TextInput style={styles.Textinput}  placeholder='Password0'/>
+     <TextInput style={styles.Textinput}  placeholder='Password2'/>
+     <TextInput style={styles.Textinput}  placeholder='Password3'/>
+     <TextInput style={styles.Textinput}  placeholder='Password4'/>
+     <TextInput style={styles.Textinput}  placeholder='Password6'/>
+     <TextInput style={styles.Textinput}  placeholder='Password5'/>
+
+     <Button title='Submit' onPress={()=> null}/>
+      </View> 
+   </View>
+   </TouchableWithoutFeedback>
+   </KeyboardAwareScrollView>
+     
+  );
+}
+
+const styles = StyleSheet.create({
+  container:{
+    flex:1,
+  },
+  inner:{
+    flex: 1,
+    width:"90%"
+  },
+  header:{
+    fontSize:40,
+    
+  },
+  Textinput:{
+    flex:1,
+    borderBottomWidth:2,
+    height:200,
+    fontSize:25,
+    width:"80%",
+    paddingHorizontal:10,
+    marginBottom:10
+  },
+  btncontainer:{
+    flex:1,
+    
+  }
+
+});
