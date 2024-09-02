@@ -1,0 +1,54 @@
+
+import { useState } from 'react';
+import {  Button, Modal, StyleSheet, Text, View } from 'react-native';
+
+
+export default function Testing() {
+
+  const[isModalVisible, setIsModelVisible]= useState(false)
+
+  return (
+    <View style={styles.container} >
+     <Modal visible={isModalVisible} animationType='fade'>
+      <View style={styles.Hmodal}>
+        <View style={styles.cmodal}>
+        <Text >This is a Model</Text>
+        <Button  title='hide Modal' onPress={() => setIsModelVisible(false)}/>
+        </View>
+      </View>
+     </Modal>
+
+     <View style={styles.Smodal}>
+      <Button  title='Show Modal' onPress={() => setIsModelVisible(true)}/>
+     </View>
+    </View>
+     
+  );
+}
+
+const styles = StyleSheet.create({
+  container:{
+    flex:1,
+    backgroundColor:"#BBBBBB",
+    alignItems:"center",
+    justifyContent:"center",
+  },
+  Smodal:{
+    width:200,
+  },
+  Hmodal:{
+    flex:1,
+    justifyContent:"center",
+    alignItems:"center",
+    backgroundColor:"#227B94",
+  
+  },
+  cmodal:{
+    width:"80%",
+    backgroundColor:"white",
+    padding:20,
+    borderRadius:20
+  }
+
+  
+});
