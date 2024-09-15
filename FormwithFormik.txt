@@ -1,0 +1,63 @@
+import React, { useState } from 'react'
+import { Text, View ,StyleSheet,TextInput, Button} from 'react-native'
+import {useFormik} from 'formik'
+
+export default function App() {
+
+  const formik = useFormik({
+    initialValues: {
+      username:'',
+      password:'',
+      email: '',
+      address:'',
+    },
+    onSubmit: (values) =>{
+      console.log(values);
+    }
+
+  });
+
+  return (
+    <View style={Styles.Container}>
+      <TextInput style={Styles.input} 
+      placeholder='Username' 
+      value={formik.values.username}
+      onChangeText={formik.handleChange("username")}
+       />
+      <TextInput style={Styles.input} 
+      placeholder='Password'
+      value={formik.values.password}
+      onChangeText={formik.handleChange("password")}
+      secureTextEntry
+      />
+      <TextInput style={Styles.input} 
+      placeholder='Email'
+      value={formik.values.email}
+      onChangeText={formik.handleChange("email")}
+      
+      />
+      <TextInput style={Styles.input} 
+      placeholder='Address'
+      value={formik.values.address}
+      onChangeText={formik.handleChange("address")}
+      />
+      <Button  title='Submit' onPress={formik.handleSubmit} />
+    </View>
+  )
+}
+const Styles = StyleSheet.create({
+  Container:{
+    padding:20, 
+    marginTop:10,
+    justifyContent:'center',
+  },
+  input:{
+    height:40,
+    borderColor:'gray',
+    borderWidth:2,
+    marginBottom:10,
+    padding:10
+    },
+   
+})
+
