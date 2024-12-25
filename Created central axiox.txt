@@ -1,0 +1,19 @@
+import axios from "axios"•
+import { Alert from "react-native";
+export const apiCUent =
+baseURL: "https://$ sonptacehotder.typicode.com",
+apiCUent. interceptors. request. use(
+// success,
+(config) {
+const token = "YOUR_TOKEN";
+config.headers.Authorization = 'Bearer ${tokenF ;
+return config;
+apiC1ient. interceptors. response. use(
+(response) {
+response. data) ;
+coyote. log ("Data received",
+return response;
+(error) {
+occurred");
+console. received");
+return Promise. reject (error);
