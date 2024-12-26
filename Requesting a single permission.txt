@@ -1,0 +1,33 @@
+import { StatusBar } from 'expo-status-bar';
+import {Alert, StyleSheet, Text, View } from 'react-native';
+import * as Location from "expo-location"
+import { useEffect } from 'react';
+
+export default function App() {
+
+  useEffect(()=>{
+   Location.requestForegroundPermissionsAsync().then(({status})=>{
+    if(status === "granted"){
+      // Alert.alert("Permission Granted")
+    }
+    else{
+      Alert.alert("Permission denied")
+    }
+   })
+  })
+  return (
+    <View style={styles.container}>
+      <Text>Happy me221</Text>
+      <StatusBar style="auto" />
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
