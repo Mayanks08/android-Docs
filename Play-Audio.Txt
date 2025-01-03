@@ -1,0 +1,31 @@
+
+import { Alert, Button, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import  {Audio} from "expo-av"
+import { useState } from 'react';
+
+export default function App() {
+  
+
+  async function playSound() {
+    const { sound } = await Audio.Sound.createAsync(require("./assets/Song/01.mp3")
+  );
+
+    await sound.playAsync();
+    
+  }
+ 
+  return (
+    <View style={styles.container}>
+      <Button title={'Play Sounds'}  onPress={playSound}/>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
