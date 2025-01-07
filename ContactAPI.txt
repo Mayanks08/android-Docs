@@ -1,0 +1,41 @@
+import { useState } from 'react';
+import { Button, StyleSheet, Text, View } from 'react-native';
+import * as Contacts from 'expo-contacts';
+
+export default function App() {
+
+  const [contacts, setContacts] = useState([]);
+
+  const getContacts = async () => {
+    const { status } = await Contacts.requestPermissionsAsync();
+
+
+    if(status === 'granted'){
+      const { data } = await Contacts.getContactsAsync({})
+      console.log(data.length)
+      console.log(data)
+    }else {
+      Alert.alert("Contact permissions are not granted")
+    }
+
+  }
+  return (
+    <View style={styles.container}>
+      <Text style={styles.Text}>Testing The Contact</Text>
+     <Button style={styles.But1} title="Get Contacts" onPress={getContacts} />
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: 'black',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  Text: {
+    color: 'white',
+  },
+  
+});
